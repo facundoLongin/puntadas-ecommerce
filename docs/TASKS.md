@@ -37,6 +37,8 @@ Este archivo mantiene el estado practico del proyecto.
 - Quitar assets genericos del starter de Next no utilizados.
 - Verificar que frontend y backend respondan localmente.
 - Revisar que no haya secretos o credenciales en archivos del proyecto.
+- Reemplazar placeholders visuales por imagenes demo generadas por producto.
+- Documentar assets generados en `docs/ASSETS.md`.
 
 ## Bloqueos
 

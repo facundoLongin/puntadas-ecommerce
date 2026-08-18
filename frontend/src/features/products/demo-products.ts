@@ -13,7 +13,7 @@ export const demoProducts: Product[] = [
     price: 130000,
     transferPrice: 110500,
     installments: 3,
-    imageTone: "linen",
+    imageUrl: "/images/products/acolchado-lino-natural.png",
     isNew: true,
     isFeatured: true,
     createdAt: "2026-08-18T00:00:00.000Z"
@@ -30,7 +30,7 @@ export const demoProducts: Product[] = [
     price: 42000,
     transferPrice: 35700,
     installments: 3,
-    imageTone: "olive",
+    imageUrl: "/images/products/almohadon-verde-oliva.png",
     isNew: true,
     isFeatured: false,
     createdAt: "2026-08-17T00:00:00.000Z"
@@ -47,7 +47,7 @@ export const demoProducts: Product[] = [
     price: 98000,
     transferPrice: 83300,
     installments: 3,
-    imageTone: "pearl",
+    imageUrl: "/images/products/cubre-edredon-gris-perla.png",
     isNew: false,
     isFeatured: true,
     createdAt: "2026-08-12T00:00:00.000Z"
@@ -64,7 +64,7 @@ export const demoProducts: Product[] = [
     price: 210000,
     transferPrice: 178500,
     installments: 6,
-    imageTone: "camel",
+    imageUrl: "/images/products/respaldo-camel.png",
     isNew: false,
     isFeatured: true,
     createdAt: "2026-08-10T00:00:00.000Z"
@@ -81,7 +81,7 @@ export const demoProducts: Product[] = [
     price: 76000,
     transferPrice: 64600,
     installments: 3,
-    imageTone: "stone",
+    imageUrl: "/images/products/cubrecama-algodon-stone.png",
     isNew: false,
     isFeatured: false,
     createdAt: "2026-08-06T00:00:00.000Z"
@@ -98,7 +98,7 @@ export const demoProducts: Product[] = [
     price: 89000,
     transferPrice: 75650,
     installments: 3,
-    imageTone: "cotton",
+    imageUrl: "/images/products/pieza-de-cama-cotton.png",
     isNew: true,
     isFeatured: false,
     createdAt: "2026-08-15T00:00:00.000Z"

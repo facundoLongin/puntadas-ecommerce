@@ -113,6 +113,7 @@ frontend/
 - Guia de medidas.
 - Paginas base de contacto, quienes somos, formas de pago y preguntas frecuentes.
 - Componentes reutilizables de UI, layout y productos.
+- Imagenes de producto servidas desde `frontend/public/images/products/`.
 
 ## Flujo General
 

@@ -13,6 +13,7 @@ Antes de implementar cambios importantes, leer:
 - `docs/DECISIONS.md`
 - `docs/PRIVACY.md`
 - `docs/PORTFOLIO.md`
+- `docs/ASSETS.md`
 
 ## Forma De Trabajo
 
@@ -31,6 +32,7 @@ Antes de implementar cambios importantes, leer:
 - Nunca agregar secretos, tokens, credenciales, passwords, claves API, archivos `.env` reales, backups, exports o logs con datos sensibles.
 - Usar datos demo/ficticios para ejemplos, semillas, capturas y documentacion publica.
 - Mantener `.env.example` sin valores reales.
+- Registrar assets publicos en `docs/ASSETS.md`, incluyendo origen y notas de uso.
 - Antes de preparar cambios para GitHub, revisar `docs/PRIVACY.md` y completar el checklist de publicacion.
 - Si una tarea pide manejar informacion real del negocio, guardar esa informacion fuera del repositorio y documentar solo la estructura o el comportamiento necesario.
 - Si aparece informacion sensible en archivos del proyecto, avisar y corregir antes de continuar con publicacion o deploy.

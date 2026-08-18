@@ -27,7 +27,7 @@ export type Product = {
   price: number;
   transferPrice: number;
   installments: number;
-  imageTone: "linen" | "olive" | "pearl" | "camel" | "stone" | "cotton";
+  imageUrl: string;
   isNew: boolean;
   isFeatured: boolean;
   createdAt: string;
