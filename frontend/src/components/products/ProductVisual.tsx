@@ -12,7 +12,10 @@ const toneClasses: Record<Product["imageTone"], string> = {
 
 export function ProductVisual({ product }: { product: Product }) {
   return (
-    <div className={cn("relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br", toneClasses[product.imageTone])}>
+    <div
+      className={cn("relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br", toneClasses[product.imageTone])}
+      data-testid="product-visual"
+    >
       <div className="absolute inset-x-6 top-8 h-20 rounded-b-[40%] bg-white/50 shadow-sm" />
       <div className="absolute bottom-10 left-5 right-5 h-28 rounded-t-[42px] bg-white/35 shadow-lg" />
       <div className="absolute bottom-8 left-8 right-8 h-5 rounded-full bg-black/10" />
