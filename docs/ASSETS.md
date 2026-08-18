@@ -7,6 +7,17 @@ Este archivo registra assets visuales del proyecto y su origen.
 Los assets publicos no deben exponer datos reales del negocio, clientes o usuarios.
 Las imagenes de producto actuales son imagenes demo generadas para portfolio y desarrollo.
 
+## Imagen Principal
+
+```text
+Archivo: frontend/public/images/hero/puntadas-home-hero.png
+Uso: hero de inicio
+Origen: generado con imagegen
+Licencia/uso: asset generado para el proyecto, apto como demo publica
+Fecha: 2026-08-18
+Notas: dormitorio luminoso con textiles beige, off-white y verde oliva; sin texto, logos ni personas.
+```
+
 ## Imagenes De Producto
 
 ```text

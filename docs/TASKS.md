@@ -39,6 +39,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Revisar que no haya secretos o credenciales en archivos del proyecto.
 - Reemplazar placeholders visuales por imagenes demo generadas por producto.
 - Documentar assets generados en `docs/ASSETS.md`.
+- Reemplazar imagen generica del inicio por hero generado para Puntadas.
 
 ## Bloqueos
 

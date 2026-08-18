@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -37,10 +38,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[320px] overflow-hidden rounded-md bg-[#f5efe7]">
-            <div className="absolute inset-x-10 top-10 h-28 rounded-b-[50%] bg-white/75 shadow-sm" />
-            <div className="absolute bottom-12 left-8 right-8 h-36 rounded-t-[56px] bg-[#d8c4a5]/70 shadow-xl" />
-            <div className="absolute bottom-10 left-14 right-14 h-6 rounded-full bg-[#6f7c4e]/20" />
+          <div className="relative min-h-[320px] overflow-hidden rounded-md bg-[#f5efe7] shadow-sm">
+            <Image
+              src="/images/hero/puntadas-home-hero.png"
+              alt="Dormitorio luminoso con textiles Puntadas en tonos beige, off white y verde oliva"
+              fill
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>
