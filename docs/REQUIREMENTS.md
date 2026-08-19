@@ -64,6 +64,40 @@ Prioridad: media
 Estado: aprobado
 ```
 
+```text
+ID: RF-006
+Nombre: Carrito demo
+Usuario afectado: clientes
+Descripcion: permitir agregar productos al carrito desde listado y detalle.
+Reglas:
+- Antes de agregar un producto se debe elegir una medida.
+- El precio mostrado y agregado al carrito debe depender de la medida seleccionada.
+- El carrito debe permitir aumentar, reducir y quitar productos por variante seleccionada.
+- Debe existir un boton para vaciar el carrito completo.
+- Al agregar un producto debe mostrarse feedback visual en pantalla.
+- Personas sin cuenta pueden navegar la pagina y revisar productos.
+- Para agregar productos al carrito o avanzar con compra se debe tener una cuenta/sesion.
+- Si una persona sin sesion intenta agregar al carrito, se debe mostrar aviso con enlace para ingresar o registrarse.
+- Los datos de carrito iniciales son demo/locales y no representan pedidos reales.
+- No se deben guardar datos reales de clientes en el repositorio.
+Prioridad: alta
+Estado: implementado
+```
+
+```text
+ID: RF-007
+Nombre: Acceso de cliente demo
+Usuario afectado: clientes
+Descripcion: mostrar opciones de ingresar y registrarse desde el header y paginas dedicadas.
+Reglas:
+- El acceso inicial es demo/local, sin backend real de usuarios.
+- La UI debe ofrecer ingresar y registrarse desde el icono de cuenta del header.
+- No se deben pedir ni guardar credenciales reales en esta etapa.
+- La sesion demo solo desbloquea flujos de carrito/compra para validar experiencia.
+Prioridad: alta
+Estado: implementado
+```
+
 Formato recomendado:
 
 ```text
@@ -96,6 +130,10 @@ Estado: propuesto / aprobado / implementado
 
 - Los productos pertenecen a categorias.
 - Los productos pueden tener variantes por color, medida y opcion.
+- Las medidas pueden tener precios distintos dentro de un mismo producto.
+- En el carrito demo, medidas mas grandes pueden tener precios mayores segun los datos ficticios definidos.
+- La navegacion publica no requiere cuenta.
+- Agregar al carrito y avanzar con compra requiere una cuenta o sesion.
 - Los ejemplos publicos usan datos ficticios.
 - Las reglas criticas de datos y permisos deben validarse en backend.
 
@@ -111,5 +149,4 @@ Estado: propuesto / aprobado / implementado
 - Quienes van a usar el sistema?
 - Que tareas deberia simplificar primero?
 - Hay pagos, reservas, stock, clientes, agenda o pedidos involucrados?
-- La accion principal sera comprar, agregar al carrito o consultar por WhatsApp?
 - El negocio quiere panel administrativo en el MVP o en una etapa posterior?

@@ -17,6 +17,12 @@ export type ProductColor =
 
 export type ProductSort = "newest" | "price-asc" | "price-desc" | "name";
 
+export type ProductMeasureVariant = {
+  measure: string;
+  price: number;
+  transferPrice: number;
+};
+
 export type Product = {
   id: ProductId;
   slug: string;
@@ -28,6 +34,7 @@ export type Product = {
   options: string[];
   price: number;
   transferPrice: number;
+  measureVariants: ProductMeasureVariant[];
   installments: number;
   imageUrl: string;
   isNew: boolean;

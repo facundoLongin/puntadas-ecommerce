@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { AuthProvider } from "@/components/auth/AuthProvider";
+import { CartFeedback } from "@/components/cart/CartFeedback";
+import { CartFeedbackProvider } from "@/components/cart/CartFeedbackProvider";
+import { CartProvider } from "@/components/cart/CartProvider";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -27,9 +31,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <CartFeedbackProvider>
+            <CartProvider>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <CartFeedback />
+            </CartProvider>
+          </CartFeedbackProvider>
+        </AuthProvider>
       </body>
     </html>
   );

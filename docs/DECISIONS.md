@@ -68,3 +68,27 @@ Contexto: se necesita avanzar con una version visible sin exponer informacion re
 Razon: permite validar experiencia, estructura y estetica con bajo riesgo, manteniendo la arquitectura lista para crecer.
 
 Consecuencias: frontend y backend tienen datos demo iniciales. Cuando se conecte persistencia real, se debe evitar duplicar reglas y consolidar contratos si aparece logica compartida relevante.
+
+### 2026-08-19 - Carrito demo con precio por medida
+
+Decision: usar carrito demo en frontend como accion principal inicial y modelar precios por medida mediante variantes ficticias.
+
+Contexto: el negocio pidio que antes de agregar un producto al carrito se elija la medida y que el precio cambie segun esa seleccion.
+
+Alternativas consideradas: boton de compra directo, consulta por WhatsApp sin carrito, carrito completo con checkout real.
+
+Razon: el carrito demo permite validar la experiencia principal sin manejar pedidos reales, clientes ni pagos. Las variantes por medida preparan el modelo para reglas de precio mas reales en una etapa posterior.
+
+Consecuencias: los productos demo incluyen `measureVariants`. El estado del carrito vive en el navegador y no debe considerarse persistencia real de pedidos.
+
+### 2026-08-19 - Acceso demo para flujos de carrito
+
+Decision: permitir navegacion publica sin cuenta, pero requerir una sesion demo para agregar productos al carrito o avanzar con compra.
+
+Contexto: el negocio quiere que cualquier persona pueda revisar la pagina, pero que las acciones de compra queden asociadas a una cuenta.
+
+Alternativas consideradas: permitir carrito anonimo, bloquear toda la navegacion, implementar autenticacion real completa.
+
+Razon: la sesion demo valida el flujo y la experiencia sin pedir credenciales reales ni guardar datos personales en esta etapa publica.
+
+Consecuencias: el frontend incluye `features/auth` y paginas `/ingresar` y `/registro`. En produccion se debera reemplazar por autenticacion real validada por backend.

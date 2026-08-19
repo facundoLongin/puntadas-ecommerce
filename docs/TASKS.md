@@ -4,7 +4,6 @@ Este archivo mantiene el estado practico del proyecto.
 
 ## En Progreso
 
-- Definir accion principal: comprar, carrito o WhatsApp.
 - Definir si el panel administrativo entra en MVP.
 
 ## Pendiente
@@ -13,7 +12,9 @@ Este archivo mantiene el estado practico del proyecto.
 - Inicializar Git desde la raiz, si corresponde.
 - Reemplazar datos demo por fuente real cuando se defina persistencia.
 - Definir imagenes reales o generadas para productos con permiso de publicacion.
-- Definir comportamiento real de ayuda, mi cuenta y carrito.
+- Definir comportamiento real de ayuda y mi cuenta.
+- Definir checkout real o derivacion a WhatsApp desde el carrito.
+- Definir autenticacion real de usuarios para produccion.
 
 ## Hecho
 
@@ -40,7 +41,13 @@ Este archivo mantiene el estado practico del proyecto.
 - Reemplazar placeholders visuales por imagenes demo generadas por producto.
 - Documentar assets generados en `docs/ASSETS.md`.
 - Reemplazar imagen generica del inicio por hero generado para Puntadas.
+- Definir carrito como accion principal inicial.
+- Implementar carrito demo con seleccion de medida y precio por variante.
+- Implementar aumento, reduccion, eliminacion por item y vaciado completo del carrito.
+- Implementar feedback visual al agregar productos al carrito.
+- Implementar acceso demo de cliente con ingreso/registro desde header.
+- Bloquear agregado al carrito y compra si no hay sesion demo.
 
 ## Bloqueos
 
-- Faltan definiciones de compra/carrito/WhatsApp y panel administrativo.
+- Faltan definiciones de checkout real, derivacion a WhatsApp y panel administrativo.

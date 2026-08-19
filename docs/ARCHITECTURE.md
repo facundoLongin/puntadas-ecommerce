@@ -14,7 +14,7 @@ Arquitectura definida como monorepo con dos aplicaciones principales:
 - Frontend: Next.js, TypeScript, Tailwind CSS.
 - Backend: Node.js, TypeScript, Express.
 - Base de datos: por definir. Inicialmente repositorios en memoria con datos demo.
-- Autenticacion: por definir. No incluida en el primer corte publico.
+- Autenticacion: demo local en frontend para validar experiencia. Autenticacion real por definir.
 - Hosting/deploy: por definir.
 
 ## Estructura Del Proyecto
@@ -110,10 +110,30 @@ frontend/
 - Home.
 - Productos con grilla, filtros y ordenamiento.
 - Detalle de producto por slug.
+- Carrito demo en cliente con seleccion de medida y precio por variante.
+- Acceso demo de cliente con opciones de ingresar y registrarse.
 - Guia de medidas.
 - Paginas base de contacto, quienes somos, formas de pago y preguntas frecuentes.
 - Componentes reutilizables de UI, layout y productos.
 - Imagenes de producto servidas desde `frontend/public/images/products/`.
+
+### Carrito Demo
+
+- El estado del carrito vive en `features/cart` y se provee con `CartProvider`.
+- El carrito se persiste en `localStorage` del navegador para desarrollo/demo.
+- `ProductPurchaseForm` centraliza seleccion de medida, precio calculado y accion de agregar.
+- `CartPageContent` centraliza aumento, reduccion, eliminacion por item y vaciado completo.
+- `CartFeedback` muestra una notificacion visual reutilizable cuando se agrega un producto.
+- Si no hay sesion demo, `ProductPurchaseForm` bloquea el agregado y muestra enlace a ingreso/registro.
+- El carrito no registra compras reales, clientes, telefonos, emails ni informacion sensible.
+
+### Acceso Demo
+
+- El estado de sesion demo vive en `features/auth`.
+- `AuthProvider` provee estado de cliente demo al frontend.
+- `AccountMenu` muestra acciones de ingresar, registrarse o cerrar sesion desde el header.
+- Las paginas `/ingresar` y `/registro` permiten activar una cuenta demo sin pedir credenciales reales.
+- Esta capa no reemplaza autenticacion real de produccion ni autorizacion backend.
 
 ## Flujo General
 

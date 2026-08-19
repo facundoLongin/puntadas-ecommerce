@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { ProductPurchaseForm } from "@/components/products/ProductPurchaseForm";
 import { ProductVisual } from "@/components/products/ProductVisual";
 import { demoProducts } from "@/features/products/demo-products";
 import { categoryLabels, colorLabels } from "@/features/products/product-options";
-import { formatCurrency } from "@/lib/formatters";
 
 type ProductDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -47,16 +47,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           <p className="mt-4 max-w-2xl leading-8 text-[#62594f]">{product.description}</p>
         </div>
 
-        <div className="grid gap-2">
-          <p className="text-2xl font-bold text-[#211d19]">{formatCurrency(product.price)}</p>
-          <p className="font-semibold text-[#4a443d]">
-            {formatCurrency(product.transferPrice)} con transferencia
-          </p>
-          <p className="text-sm text-[#6f675d]">
-            {product.installments} cuotas sin interes disponibles.
-          </p>
-        </div>
-
         <div className="grid gap-4 text-sm text-[#4b443c]">
           <p>
             <span className="font-semibold">Colores:</span>{" "}
@@ -70,8 +60,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
-          <Button>Comprar</Button>
+        <div className="grid gap-3">
+          <ProductPurchaseForm product={product} />
           <Link href="/guia-de-medidas">
             <Button variant="ghost" className="border border-[#d8c4a5]">
               Ver guia de medidas

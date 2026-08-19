@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CircleHelp, Menu, Search, ShoppingCart, UserRound } from "lucide-react";
+import { CircleHelp, Menu, Search } from "lucide-react";
+import { AccountMenu } from "@/components/layout/AccountMenu";
+import { CartStatus } from "@/components/cart/CartStatus";
 import { IconButton } from "@/components/ui/IconButton";
 
 const navItems = [
@@ -48,15 +50,8 @@ export function Header() {
           <IconButton label="Ayuda">
             <CircleHelp className="h-5 w-5" />
           </IconButton>
-          <IconButton label="Mi cuenta">
-            <UserRound className="h-5 w-5" />
-          </IconButton>
-          <IconButton label="Mi carrito" className="relative">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#6f7c4e] px-1 text-[10px] font-semibold text-white">
-              0
-            </span>
-          </IconButton>
+          <AccountMenu />
+          <CartStatus />
           <IconButton label="Menu" className="lg:hidden">
             <Menu className="h-5 w-5" />
           </IconButton>
