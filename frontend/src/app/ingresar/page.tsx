@@ -2,7 +2,7 @@ import { AuthPageContent } from "@/components/auth/AuthPageContent";
 
 export const metadata = {
   title: "Ingresar | Puntadas",
-  description: "Acceso de cliente demo para Puntadas."
+  description: "Acceso de cliente para Puntadas."
 };
 
 export default function LoginPage() {

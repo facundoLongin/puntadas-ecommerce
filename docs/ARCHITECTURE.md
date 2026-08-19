@@ -14,7 +14,7 @@ Arquitectura definida como monorepo con dos aplicaciones principales:
 - Frontend: Next.js, TypeScript, Tailwind CSS.
 - Backend: Node.js, TypeScript, Express.
 - Base de datos: por definir. Inicialmente repositorios en memoria con datos demo.
-- Autenticacion: demo local en frontend para validar experiencia. Autenticacion real por definir.
+- Autenticacion: usuarios y sesiones en memoria del backend para desarrollo. Persistencia real por definir.
 - Hosting/deploy: por definir.
 
 ## Estructura Del Proyecto
@@ -76,7 +76,9 @@ backend/
 - Endpoint `GET /health`.
 - Endpoint `GET /api/products`.
 - Endpoint `GET /api/products/:slug`.
+- Endpoints `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me` y `POST /api/auth/logout`.
 - Repositorio en memoria con productos demo ficticios.
+- Repositorios en memoria para usuarios y sesiones.
 - Manejo centralizado de errores.
 - Validacion de query params con Zod.
 
@@ -111,7 +113,7 @@ frontend/
 - Productos con grilla, filtros y ordenamiento.
 - Detalle de producto por slug.
 - Carrito demo en cliente con seleccion de medida y precio por variante.
-- Acceso demo de cliente con opciones de ingresar y registrarse.
+- Acceso de cliente con opciones de ingresar y registrarse.
 - Guia de medidas.
 - Paginas base de contacto, quienes somos, formas de pago y preguntas frecuentes.
 - Componentes reutilizables de UI, layout y productos.
@@ -124,16 +126,19 @@ frontend/
 - `ProductPurchaseForm` centraliza seleccion de medida, precio calculado y accion de agregar.
 - `CartPageContent` centraliza aumento, reduccion, eliminacion por item y vaciado completo.
 - `CartFeedback` muestra una notificacion visual reutilizable cuando se agrega un producto.
-- Si no hay sesion demo, `ProductPurchaseForm` bloquea el agregado y muestra enlace a ingreso/registro.
+- Si no hay sesion, `ProductPurchaseForm` bloquea el agregado y muestra enlace a ingreso/registro.
 - El carrito no registra compras reales, clientes, telefonos, emails ni informacion sensible.
 
-### Acceso Demo
+### Acceso En Memoria
 
-- El estado de sesion demo vive en `features/auth`.
-- `AuthProvider` provee estado de cliente demo al frontend.
+- Los usuarios y sesiones viven en memoria del backend mientras el proceso esta levantado.
+- `AuthService` coordina registro, login, sesion actual y logout.
+- Las contrasenas se guardan hasheadas en memoria y no se devuelven al frontend.
+- El frontend guarda solo el token de sesion en `localStorage` para poder recuperar la sesion mientras el backend siga activo.
+- `AuthProvider` provee estado de cliente al frontend consultando `/api/auth/me`.
 - `AccountMenu` muestra acciones visibles de ingresar/registrarse y, con sesion activa, el nombre de usuario y cierre de sesion.
-- Las paginas `/ingresar` y `/registro` permiten activar una cuenta demo sin pedir credenciales reales.
-- Esta capa no reemplaza autenticacion real de produccion ni autorizacion backend.
+- Las paginas `/ingresar` y `/registro` usan formularios reales contra la API.
+- Esta capa no reemplaza persistencia real de produccion ni autorizacion backend completa.
 
 ## Flujo General
 

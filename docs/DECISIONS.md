@@ -81,24 +81,36 @@ Razon: el carrito demo permite validar la experiencia principal sin manejar pedi
 
 Consecuencias: los productos demo incluyen `measureVariants`. El estado del carrito vive en el navegador y no debe considerarse persistencia real de pedidos.
 
-### 2026-08-19 - Acceso demo para flujos de carrito
+### 2026-08-19 - Acceso para flujos de carrito
 
-Decision: permitir navegacion publica sin cuenta, pero requerir una sesion demo para agregar productos al carrito o avanzar con compra.
+Decision: permitir navegacion publica sin cuenta, pero requerir una sesion para agregar productos al carrito o avanzar con compra.
 
 Contexto: el negocio quiere que cualquier persona pueda revisar la pagina, pero que las acciones de compra queden asociadas a una cuenta.
 
 Alternativas consideradas: permitir carrito anonimo, bloquear toda la navegacion, implementar autenticacion real completa.
 
-Razon: la sesion demo valida el flujo y la experiencia sin pedir credenciales reales ni guardar datos personales en esta etapa publica.
+Razon: la sesion valida el flujo y la experiencia sin bloquear la navegacion publica.
 
-Consecuencias: el frontend incluye `features/auth` y paginas `/ingresar` y `/registro`. En produccion se debera reemplazar por autenticacion real validada por backend.
+Consecuencias: el frontend incluye `features/auth` y paginas `/ingresar` y `/registro`. En produccion se debera usar persistencia real y politicas de seguridad completas.
 
 ### 2026-08-19 - Acceso visible en header
 
-Decision: mostrar botones visibles de ingresar y registrarse en el header cuando no hay sesion, y mostrar el nombre del usuario demo cuando la sesion esta activa.
+Decision: mostrar botones visibles de ingresar y registrarse en el header cuando no hay sesion, y mostrar el nombre del usuario cuando la sesion esta activa.
 
 Contexto: el icono de perfil podia no ser evidente para personas nuevas que quieren registrarse o ingresar.
 
 Razon: las acciones visibles reducen friccion y hacen mas claro que se necesita una cuenta para comprar.
 
 Consecuencias: el header ocupa mas espacio, por lo que sus controles deben mantenerse compactos y adaptables en mobile.
+
+### 2026-08-19 - Usuarios en memoria para desarrollo
+
+Decision: reemplazar la cuenta demo local por usuarios y sesiones en memoria del backend.
+
+Contexto: se necesita crear una cuenta, cerrar sesion y volver a ingresar con la misma cuenta mientras el programa siga levantado.
+
+Alternativas consideradas: mantener usuario demo fijo en frontend, guardar usuarios en `localStorage`, conectar una base de datos real.
+
+Razon: memoria backend respeta mejor la arquitectura por capas, evita persistencia accidental de datos personales en el repo y permite validar un flujo cercano al real.
+
+Consecuencias: al detener el backend se pierden usuarios y sesiones. El frontend guarda solo un token de sesion local para recuperar la sesion mientras el backend siga activo.

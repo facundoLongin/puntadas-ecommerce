@@ -86,15 +86,18 @@ Estado: implementado
 
 ```text
 ID: RF-007
-Nombre: Acceso de cliente demo
+Nombre: Acceso de cliente en memoria
 Usuario afectado: clientes
 Descripcion: mostrar opciones de ingresar y registrarse desde el header y paginas dedicadas.
 Reglas:
-- El acceso inicial es demo/local, sin backend real de usuarios.
+- El acceso inicial usa usuarios y sesiones en memoria del backend.
+- Al detener el backend se pierden usuarios y sesiones.
+- Una cuenta creada debe poder cerrar sesion y volver a iniciar sesion mientras el backend siga levantado.
+- El registro debe pedir nombre, apellido, email, telefono, contrasena y direccion de entrega.
+- Las contrasenas no deben devolverse al frontend ni guardarse en texto plano.
 - La UI debe mostrar ingresar y registrarse como acciones visibles en el header.
-- Cuando hay sesion demo activa, el header debe mostrar el nombre de usuario.
-- No se deben pedir ni guardar credenciales reales en esta etapa.
-- La sesion demo solo desbloquea flujos de carrito/compra para validar experiencia.
+- Cuando hay sesion activa, el header debe mostrar el nombre de usuario.
+- Se deben usar datos de prueba para demos publicas y capturas.
 Prioridad: alta
 Estado: implementado
 ```
@@ -135,6 +138,7 @@ Estado: propuesto / aprobado / implementado
 - En el carrito demo, medidas mas grandes pueden tener precios mayores segun los datos ficticios definidos.
 - La navegacion publica no requiere cuenta.
 - Agregar al carrito y avanzar con compra requiere una cuenta o sesion.
+- Los usuarios iniciales se guardan en memoria del backend hasta detener el servidor.
 - Los ejemplos publicos usan datos ficticios.
 - Las reglas criticas de datos y permisos deben validarse en backend.
 

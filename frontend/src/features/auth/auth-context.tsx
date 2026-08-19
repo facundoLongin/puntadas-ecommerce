@@ -1,59 +1,87 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-
-type DemoUser = {
-  name: string;
-};
+import {
+  getCurrentAccount,
+  loginAccount,
+  logoutAccount,
+  registerAccount,
+  type AccountUser,
+  type LoginInput,
+  type RegisterInput
+} from "./auth-api";
 
 type AuthContextValue = {
-  user: DemoUser | null;
+  user: AccountUser | null;
   isAuthenticated: boolean;
-  signInDemo: () => void;
-  signOut: () => void;
+  isLoading: boolean;
+  register: (input: RegisterInput) => Promise<void>;
+  login: (input: LoginInput) => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
-const storageKey = "puntadas-demo-user";
-const demoUser: DemoUser = { name: "Cliente demo" };
+const tokenStorageKey = "puntadas-session-token";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<DemoUser | null>(() => {
-    if (typeof window === "undefined") {
-      return null;
-    }
-
-    const storedUser = window.localStorage.getItem(storageKey);
-    if (!storedUser) {
-      return null;
-    }
-
-    try {
-      const parsedUser = JSON.parse(storedUser) as DemoUser;
-      return typeof parsedUser.name === "string" ? parsedUser : null;
-    } catch {
-      window.localStorage.removeItem(storageKey);
-      return null;
-    }
-  });
+  const [user, setUser] = useState<AccountUser | null>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (user) {
-      window.localStorage.setItem(storageKey, JSON.stringify(user));
-      return;
+    async function restoreSession() {
+      window.localStorage.removeItem("puntadas-demo-user");
+      const storedToken = window.localStorage.getItem(tokenStorageKey);
+
+      if (!storedToken) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const currentAccount = await getCurrentAccount(storedToken);
+        setToken(storedToken);
+        setUser(currentAccount.user);
+      } catch {
+        window.localStorage.removeItem(tokenStorageKey);
+        setToken(null);
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
-    window.localStorage.removeItem(storageKey);
-  }, [user]);
+    void restoreSession();
+  }, []);
 
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
       isAuthenticated: Boolean(user),
-      signInDemo: () => setUser(demoUser),
-      signOut: () => setUser(null)
+      isLoading,
+      register: async (input) => {
+        const auth = await registerAccount(input);
+        window.localStorage.setItem(tokenStorageKey, auth.token);
+        setToken(auth.token);
+        setUser(auth.user);
+      },
+      login: async (input) => {
+        const auth = await loginAccount(input);
+        window.localStorage.setItem(tokenStorageKey, auth.token);
+        setToken(auth.token);
+        setUser(auth.user);
+      },
+      signOut: async () => {
+        if (token) {
+          await logoutAccount(token).catch(() => undefined);
+        }
+
+        window.localStorage.removeItem(tokenStorageKey);
+        setToken(null);
+        setUser(null);
+      }
     }),
-    [user]
+    [isLoading, token, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

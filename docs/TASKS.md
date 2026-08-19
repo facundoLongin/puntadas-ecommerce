@@ -14,7 +14,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Definir imagenes reales o generadas para productos con permiso de publicacion.
 - Definir comportamiento real de ayuda y mi cuenta.
 - Definir checkout real o derivacion a WhatsApp desde el carrito.
-- Definir autenticacion real de usuarios para produccion.
+- Definir persistencia real de usuarios y sesiones para produccion.
 
 ## Hecho
 
@@ -45,9 +45,11 @@ Este archivo mantiene el estado practico del proyecto.
 - Implementar carrito demo con seleccion de medida y precio por variante.
 - Implementar aumento, reduccion, eliminacion por item y vaciado completo del carrito.
 - Implementar feedback visual al agregar productos al carrito.
-- Implementar acceso demo de cliente con ingreso/registro desde header.
-- Bloquear agregado al carrito y compra si no hay sesion demo.
+- Implementar acceso de cliente con ingreso/registro desde header.
+- Bloquear agregado al carrito y compra si no hay sesion.
 - Mostrar ingreso/registro visibles en header y nombre de usuario con sesion activa.
+- Implementar usuarios y sesiones en memoria del backend.
+- Implementar registro/login/logout con formularios reales.
 
 ## Bloqueos
 

@@ -14,6 +14,18 @@ export class NotFoundError extends AppError {
   }
 }
 
+export class ConflictError extends AppError {
+  constructor(message: string) {
+    super(message, 409, "CONFLICT");
+  }
+}
+
+export class UnauthorizedError extends AppError {
+  constructor(message: string) {
+    super(message, 401, "UNAUTHORIZED");
+  }
+}
+
 export class ValidationError extends AppError {
   constructor(message: string) {
     super(message, 400, "VALIDATION_ERROR");

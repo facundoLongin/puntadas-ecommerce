@@ -35,6 +35,12 @@ El repositorio publico muestra el sistema, no los datos reales del negocio.
 - `.env.example` con placeholders.
 - Scripts de desarrollo que no contengan secretos.
 
+## Cuentas En Memoria
+
+Durante desarrollo, el backend puede mantener usuarios y sesiones en memoria.
+Estos datos se pierden al detener el servidor y no deben exportarse, commitearse ni usarse en capturas publicas si contienen informacion real.
+Para demos de portfolio, crear cuentas con datos ficticios.
+
 ## Donde Viven Los Datos Reales
 
 Los datos reales deben vivir fuera del repositorio:
