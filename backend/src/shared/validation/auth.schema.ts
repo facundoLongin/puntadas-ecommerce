@@ -1,30 +1,36 @@
 import { z } from "zod";
 
-const requiredText = z.string().trim().min(1, "Campo obligatorio");
+const requiredText = z.string().trim().min(1, "Este campo es obligatorio");
+const nameText = z.string().trim().min(2, "Debe tener al menos 2 caracteres");
 
 export const registerSchema = z
   .object({
-    firstName: requiredText.min(2, "El nombre debe tener al menos 2 caracteres"),
-    lastName: requiredText.min(2, "El apellido debe tener al menos 2 caracteres"),
-    email: z.string().email("Email invalido").trim().toLowerCase(),
-    phone: requiredText.min(6, "Telefono invalido"),
+    firstName: nameText,
+    lastName: nameText,
+    email: z.string().email("El email debe tener un formato valido").trim().toLowerCase(),
+    phone: requiredText.min(6, "El telefono debe tener al menos 6 caracteres"),
     password: z.string().min(8, "La contrasena debe tener al menos 8 caracteres"),
-    confirmPassword: z.string().min(8, "Confirma la contrasena"),
+    confirmPassword: z.string().min(8, "La confirmacion debe tener al menos 8 caracteres"),
     address: z.object({
       street: requiredText,
       streetNumber: requiredText,
       apartment: z.string().trim().optional(),
       city: requiredText,
       province: requiredText,
-      postalCode: requiredText.min(4, "Codigo postal invalido")
+      postalCode: requiredText.min(4, "El codigo postal debe tener al menos 4 caracteres")
     })
   })
-  .refine((input) => input.password === input.confirmPassword, {
-    message: "Las contrasenas no coinciden",
-    path: ["confirmPassword"]
+  .superRefine((input, context) => {
+    if (input.password.length >= 8 && input.confirmPassword.length >= 8 && input.password !== input.confirmPassword) {
+      context.addIssue({
+        code: "custom",
+        message: "Las contrasenas no coinciden",
+        path: ["confirmPassword"]
+      });
+    }
   });
 
 export const loginSchema = z.object({
-  email: z.string().email("Email invalido").trim().toLowerCase(),
-  password: z.string().min(1, "Campo obligatorio")
+  email: z.string().email("El email debe tener un formato valido").trim().toLowerCase(),
+  password: z.string().min(1, "La contrasena es obligatoria")
 });

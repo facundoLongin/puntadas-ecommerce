@@ -114,3 +114,13 @@ Alternativas consideradas: mantener usuario demo fijo en frontend, guardar usuar
 Razon: memoria backend respeta mejor la arquitectura por capas, evita persistencia accidental de datos personales en el repo y permite validar un flujo cercano al real.
 
 Consecuencias: al detener el backend se pierden usuarios y sesiones. El frontend guarda solo un token de sesion local para recuperar la sesion mientras el backend siga activo.
+
+### 2026-08-19 - Errores de validacion explicitos
+
+Decision: normalizar errores de validacion con campo, etiqueta, mensaje y ayuda para corregirlos.
+
+Contexto: el mensaje generico "Parametros invalidos" no alcanza para que una persona sepa que dato corregir al registrarse o ingresar.
+
+Razon: los formularios de cuenta necesitan feedback accionable por campo para reducir friccion y evitar prueba/error.
+
+Consecuencias: el middleware de errores transforma errores de Zod en detalles consumibles por el frontend. El frontend muestra esos detalles en el formulario.

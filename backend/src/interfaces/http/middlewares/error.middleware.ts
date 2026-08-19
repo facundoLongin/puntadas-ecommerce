@@ -1,14 +1,15 @@
 import type { ErrorRequestHandler } from "express";
 import { ZodError } from "zod";
 import { AppError } from "../../../shared/errors/app-error.js";
+import { toValidationErrorDetails } from "../../../shared/validation/validation-error-details.js";
 
 export const errorMiddleware: ErrorRequestHandler = (error, _request, response, _next) => {
   if (error instanceof ZodError) {
     response.status(400).json({
       error: {
         code: "VALIDATION_ERROR",
-        message: "Parametros invalidos",
-        details: error.issues
+        message: "Hay campos invalidos. Revisá los detalles para corregirlos.",
+        details: toValidationErrorDetails(error.issues)
       }
     });
     return;

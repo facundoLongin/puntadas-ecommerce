@@ -50,6 +50,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Mostrar ingreso/registro visibles en header y nombre de usuario con sesion activa.
 - Implementar usuarios y sesiones en memoria del backend.
 - Implementar registro/login/logout con formularios reales.
+- Mostrar errores especificos de validacion en registro e ingreso.
 
 ## Bloqueos
 

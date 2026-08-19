@@ -6,7 +6,7 @@ import { LogIn, UserPlus } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { useAuth } from "@/features/auth/auth-context";
-import type { LoginInput, RegisterInput } from "@/features/auth/auth-api";
+import { ApiRequestError, type ApiValidationDetail, type LoginInput, type RegisterInput } from "@/features/auth/auth-api";
 
 type AuthPageContentProps = {
   mode: "login" | "register";
@@ -67,12 +67,14 @@ export function AuthPageContent({ mode }: AuthPageContentProps) {
   const [loginForm, setLoginForm] = useState<LoginInput>(emptyLoginForm);
   const [registerForm, setRegisterForm] = useState<RegisterInput>(emptyRegisterForm);
   const [error, setError] = useState<string | null>(null);
+  const [errorDetails, setErrorDetails] = useState<ApiValidationDetail[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const isRegister = mode === "register";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
+    setErrorDetails([]);
     setIsSubmitting(true);
 
     try {
@@ -84,7 +86,12 @@ export function AuthPageContent({ mode }: AuthPageContentProps) {
 
       router.push("/productos");
     } catch (submitError) {
-      setError(submitError instanceof Error ? submitError.message : "No pudimos procesar la solicitud");
+      if (submitError instanceof ApiRequestError) {
+        setError(submitError.message);
+        setErrorDetails(submitError.details);
+      } else {
+        setError(submitError instanceof Error ? submitError.message : "No pudimos procesar la solicitud");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -259,9 +266,18 @@ export function AuthPageContent({ mode }: AuthPageContentProps) {
         )}
 
         {error ? (
-          <p className="rounded-md border border-[#e7c7bd] bg-[#fff6f2] px-3 py-2 text-sm font-medium text-[#8f3e2f]">
-            {error}
-          </p>
+          <div className="rounded-md border border-[#e7c7bd] bg-[#fff6f2] px-3 py-3 text-sm text-[#8f3e2f]">
+            <p className="font-semibold">{error}</p>
+            {errorDetails.length ? (
+              <ul className="mt-2 grid gap-2">
+                {errorDetails.map((detail) => (
+                  <li key={`${detail.field}-${detail.message}`} className="leading-5">
+                    <span className="font-semibold">{detail.label}:</span> {detail.message}. {detail.hint}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
         ) : null}
 
         <Button className="w-full" disabled={isSubmitting}>

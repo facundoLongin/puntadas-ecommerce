@@ -37,6 +37,22 @@ export type AuthResult = {
   token: string;
 };
 
+export type ApiValidationDetail = {
+  field: string;
+  label: string;
+  message: string;
+  hint: string;
+};
+
+export class ApiRequestError extends Error {
+  constructor(
+    message: string,
+    public readonly details: ApiValidationDetail[] = []
+  ) {
+    super(message);
+  }
+}
+
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000/api";
 
 async function parseApiResponse<T>(response: Response): Promise<T> {
@@ -49,8 +65,13 @@ async function parseApiResponse<T>(response: Response): Promise<T> {
     return body.data;
   }
 
-  const body = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
-  throw new Error(body?.error?.message ?? "No pudimos procesar la solicitud");
+  const body = (await response.json().catch(() => null)) as
+    | { error?: { message?: string; details?: ApiValidationDetail[] } }
+    | null;
+  throw new ApiRequestError(
+    body?.error?.message ?? "No pudimos procesar la solicitud",
+    body?.error?.details ?? []
+  );
 }
 
 export async function registerAccount(input: RegisterInput) {

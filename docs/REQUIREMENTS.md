@@ -95,6 +95,7 @@ Reglas:
 - Una cuenta creada debe poder cerrar sesion y volver a iniciar sesion mientras el backend siga levantado.
 - El registro debe pedir nombre, apellido, email, telefono, contrasena y direccion de entrega.
 - Las contrasenas no deben devolverse al frontend ni guardarse en texto plano.
+- Los errores de registro e ingreso deben indicar que campo es invalido, por que, y como corregirlo.
 - La UI debe mostrar ingresar y registrarse como acciones visibles en el header.
 - Cuando hay sesion activa, el header debe mostrar el nombre de usuario.
 - Se deben usar datos de prueba para demos publicas y capturas.

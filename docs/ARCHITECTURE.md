@@ -80,7 +80,8 @@ backend/
 - Repositorio en memoria con productos demo ficticios.
 - Repositorios en memoria para usuarios y sesiones.
 - Manejo centralizado de errores.
-- Validacion de query params con Zod.
+- Validacion de query params y formularios con Zod.
+- Errores de validacion normalizados con campo, etiqueta, mensaje y ayuda de correccion.
 
 ## Frontend
 
@@ -138,6 +139,7 @@ frontend/
 - `AuthProvider` provee estado de cliente al frontend consultando `/api/auth/me`.
 - `AccountMenu` muestra acciones visibles de ingresar/registrarse y, con sesion activa, el nombre de usuario y cierre de sesion.
 - Las paginas `/ingresar` y `/registro` usan formularios reales contra la API.
+- Los formularios muestran errores de validacion especificos devueltos por la API.
 - Esta capa no reemplaza persistencia real de produccion ni autorizacion backend completa.
 
 ## Flujo General
