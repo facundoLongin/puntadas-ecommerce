@@ -1,6 +1,11 @@
 import { ProductCatalog } from "@/components/products/ProductCatalog";
 import { demoProducts } from "@/features/products/demo-products";
 
+export const metadata = {
+  title: "Productos",
+  description: "Explorá productos textiles y deco home de Puntadas con filtros por categoría, color, medida y opción."
+};
+
 export default function ProductsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">

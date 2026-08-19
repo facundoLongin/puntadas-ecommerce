@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Contacto",
+  description: "Canales de contacto de Puntadas para consultas sobre productos textiles y deco home."
+};
+
 export default function ContactPage() {
   return <InfoPage title="Contacto" body="Seccion demo para datos publicos de contacto del negocio." />;
 }

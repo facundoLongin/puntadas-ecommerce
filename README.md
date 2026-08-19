@@ -24,6 +24,22 @@ Frontend local: `http://localhost:3000`
 
 Backend local: `http://localhost:4000`
 
+## Verificacion
+
+```bash
+npm test
+npm run build
+npm run lint --workspace frontend
+```
+
+Con el frontend levantado en `http://localhost:3000`, tambien se puede correr:
+
+```bash
+npm run test:quality
+```
+
+Ese chequeo revisa metadata SEO basica y estructura accesible en rutas clave.
+
 ## Privacidad
 
 Antes de publicar cambios, revisar `docs/PRIVACY.md`.

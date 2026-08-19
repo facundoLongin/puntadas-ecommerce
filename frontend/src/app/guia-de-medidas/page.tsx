@@ -5,6 +5,11 @@ const rows = [
   ["King", "180 x 200 cm", "Para camas de mayor tamano"]
 ];
 
+export const metadata = {
+  title: "Guía de medidas",
+  description: "Guía de medidas de Puntadas para elegir productos textiles según el tamaño de cama o ambiente."
+};
+
 export default function SizeGuidePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">

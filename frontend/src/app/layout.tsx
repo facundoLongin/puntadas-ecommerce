@@ -20,8 +20,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Puntadas | Textil y deco home",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  applicationName: "Puntadas",
+  title: {
+    default: "Puntadas | Textil y deco home",
+    template: "%s | Puntadas"
+  },
   description: "Productos textiles y deco home con datos demo para desarrollo.",
+  robots: {
+    index: true,
+    follow: true
+  },
+  openGraph: {
+    title: "Puntadas | Textil y deco home",
+    description: "Productos textiles para vestir la casa con tonos calidos y detalles cuidados.",
+    siteName: "Puntadas",
+    locale: "es_AR",
+    type: "website"
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

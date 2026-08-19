@@ -1,7 +1,7 @@
 import { AuthPageContent } from "@/components/auth/AuthPageContent";
 
 export const metadata = {
-  title: "Registrarse | Puntadas",
+  title: "Registrarse",
   description: "Registro de cliente para Puntadas."
 };
 

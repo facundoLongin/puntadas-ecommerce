@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Formas de pago",
+  description: "Información sobre formas de pago disponibles para comprar productos de Puntadas."
+};
+
 export default function PaymentMethodsPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">

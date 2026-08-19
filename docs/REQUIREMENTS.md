@@ -130,6 +130,8 @@ Estado: propuesto / aprobado / implementado
 - Evitar acoplamiento innecesario.
 - Mantener codigo claro y entendible.
 - Repo publico apto para portfolio, sin datos reales ni secretos.
+- Tests automatizados para flujos criticos de cuenta, productos, filtros, precios, SEO basico y accesibilidad basica.
+- El sitio debe exponer metadata SEO basica, sitemap y robots.
 
 ## Reglas Del Negocio
 

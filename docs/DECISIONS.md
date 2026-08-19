@@ -124,3 +124,15 @@ Contexto: el mensaje generico "Parametros invalidos" no alcanza para que una per
 Razon: los formularios de cuenta necesitan feedback accionable por campo para reducir friccion y evitar prueba/error.
 
 Consecuencias: el middleware de errores transforma errores de Zod en detalles consumibles por el frontend. El frontend muestra esos detalles en el formulario.
+
+### 2026-08-19 - Base de tests y auditoria de calidad
+
+Decision: agregar tests automatizados con `node:test` y una auditoria local de SEO/accesibilidad basica.
+
+Contexto: el proyecto apunta a desplegarse con cuentas, compras y datos sensibles, por lo que necesita verificacion repetible antes de seguir creciendo.
+
+Alternativas consideradas: no agregar tests todavia, usar un framework mas grande, o empezar con tests nativos y checks livianos.
+
+Razon: `node:test` reduce dependencias y permite cubrir reglas criticas ya. La auditoria local suma una barrera temprana para SEO y accesibilidad sin incorporar todavia Playwright.
+
+Consecuencias: se agregan scripts `npm test` y `npm run test:quality`. En una etapa posterior conviene sumar tests end-to-end con navegador real y auditoria de accesibilidad mas profunda.

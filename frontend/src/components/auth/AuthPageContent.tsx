@@ -266,7 +266,11 @@ export function AuthPageContent({ mode }: AuthPageContentProps) {
         )}
 
         {error ? (
-          <div className="rounded-md border border-[#e7c7bd] bg-[#fff6f2] px-3 py-3 text-sm text-[#8f3e2f]">
+          <div
+            role="alert"
+            aria-live="assertive"
+            className="rounded-md border border-[#e7c7bd] bg-[#fff6f2] px-3 py-3 text-sm text-[#8f3e2f]"
+          >
             <p className="font-semibold">{error}</p>
             {errorDetails.length ? (
               <ul className="mt-2 grid gap-2">

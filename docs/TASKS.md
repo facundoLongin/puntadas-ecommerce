@@ -51,6 +51,20 @@ Este archivo mantiene el estado practico del proyecto.
 - Implementar usuarios y sesiones en memoria del backend.
 - Implementar registro/login/logout con formularios reales.
 - Mostrar errores especificos de validacion en registro e ingreso.
+- Agregar tests automatizados de backend para productos y cuentas.
+- Agregar tests automatizados de frontend para filtros y precios por medida.
+- Agregar auditoria local de SEO/accesibilidad basica.
+- Agregar metadata SEO por rutas principales, sitemap y robots.
+
+## Proximos Pasos Sugeridos
+
+- Elegir proveedor de deploy para frontend y backend.
+- Elegir base de datos real y modelo inicial de usuarios, productos, pedidos y sesiones.
+- Reemplazar memoria backend por persistencia real con migraciones.
+- Definir checkout: pasarela de pago, WhatsApp o flujo mixto.
+- Agregar roles y panel administrativo para carga de productos.
+- Agregar tests end-to-end con navegador real antes de produccion.
+- Agregar monitoreo, logs seguros y manejo de errores de produccion.
 
 ## Bloqueos
 

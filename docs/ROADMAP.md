@@ -47,12 +47,20 @@ Contenido propuesto:
 
 Estado: pendiente.
 
-Contenido pendiente de definir despues del MVP.
+Contenido propuesto:
+
+- Deploy de frontend y backend.
+- Base de datos real con migraciones.
+- Persistencia real de usuarios, sesiones, productos, carrito y pedidos.
+- Checkout seguro o derivacion formal a WhatsApp/pagos.
+- Panel administrativo con roles.
+- Tests end-to-end con navegador real.
+- Monitoreo y logs sin datos sensibles.
 
 ## Futuras Mejoras
 
 - Panel administrativo.
-- Autenticacion.
+- Autenticacion persistente y segura.
 - Persistencia real.
 - Carrito completo.
 - Integracion con WhatsApp o pagos.

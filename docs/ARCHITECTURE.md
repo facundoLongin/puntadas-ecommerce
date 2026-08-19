@@ -13,6 +13,7 @@ Arquitectura definida como monorepo con dos aplicaciones principales:
 
 - Frontend: Next.js, TypeScript, Tailwind CSS.
 - Backend: Node.js, TypeScript, Express.
+- Testing: `node:test`, `tsx` y auditoria local de SEO/accesibilidad.
 - Base de datos: por definir. Inicialmente repositorios en memoria con datos demo.
 - Autenticacion: usuarios y sesiones en memoria del backend para desarrollo. Persistencia real por definir.
 - Hosting/deploy: por definir.
@@ -159,3 +160,12 @@ frontend/
 - Evitar duplicacion de logica.
 - Evitar dependencias directas desde dominio hacia infraestructura.
 - Mantener errores controlados en `shared/errors`.
+
+## Verificacion Automatizada
+
+- `npm test`: ejecuta tests de backend y frontend.
+- `npm run test:backend`: cubre API de productos, registro, login, logout, sesion y errores de validacion.
+- `npm run test:frontend`: cubre filtros, opciones y precios por medida.
+- `npm run test:quality`: requiere frontend local levantado y revisa metadata SEO, `lang`, H1, imagenes con `alt` y nombres accesibles basicos en links/botones.
+- `npm run build`: valida TypeScript y build completo de backend/frontend.
+- `npm run lint --workspace frontend`: valida reglas de lint del frontend.

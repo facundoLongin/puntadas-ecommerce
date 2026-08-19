@@ -4,6 +4,11 @@ const questions = [
   "Como se coordina la entrega?"
 ];
 
+export const metadata = {
+  title: "Preguntas frecuentes",
+  description: "Respuestas a preguntas frecuentes sobre medidas, cambios y entregas de productos Puntadas."
+};
+
 export default function FaqPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
