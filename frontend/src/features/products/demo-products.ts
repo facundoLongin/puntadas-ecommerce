@@ -18,7 +18,7 @@ export const demoProducts: Product[] = [
       { measure: "queen", price: 194000, transferPrice: 164900 }
     ],
     installments: 3,
-    imageUrl: "/images/products/acolchado-lino-natural.png",
+    imageUrl: "/images/products/acolchado-lino-natural.webp",
     isNew: true,
     isFeatured: true,
     createdAt: "2026-08-18T00:00:00.000Z"
@@ -39,7 +39,7 @@ export const demoProducts: Product[] = [
       { measure: "60 x 40 cm", price: 47000, transferPrice: 39950 }
     ],
     installments: 3,
-    imageUrl: "/images/products/almohadon-verde-oliva.png",
+    imageUrl: "/images/products/almohadon-verde-oliva.webp",
     isNew: true,
     isFeatured: false,
     createdAt: "2026-08-17T00:00:00.000Z"
@@ -61,7 +61,7 @@ export const demoProducts: Product[] = [
       { measure: "king", price: 142000, transferPrice: 120700 }
     ],
     installments: 3,
-    imageUrl: "/images/products/cubre-edredon-gris-perla.png",
+    imageUrl: "/images/products/cubre-edredon-gris-perla.webp",
     isNew: false,
     isFeatured: true,
     createdAt: "2026-08-12T00:00:00.000Z"
@@ -83,7 +83,7 @@ export const demoProducts: Product[] = [
       { measure: "1.80 m", price: 269000, transferPrice: 228650 }
     ],
     installments: 6,
-    imageUrl: "/images/products/respaldo-camel.png",
+    imageUrl: "/images/products/respaldo-camel.webp",
     isNew: false,
     isFeatured: true,
     createdAt: "2026-08-10T00:00:00.000Z"
@@ -104,7 +104,7 @@ export const demoProducts: Product[] = [
       { measure: "2 plazas", price: 94000, transferPrice: 79900 }
     ],
     installments: 3,
-    imageUrl: "/images/products/cubrecama-algodon-stone.png",
+    imageUrl: "/images/products/cubrecama-algodon-stone.webp",
     isNew: false,
     isFeatured: false,
     createdAt: "2026-08-06T00:00:00.000Z"
@@ -125,7 +125,7 @@ export const demoProducts: Product[] = [
       { measure: "1.40 x 2.70 m", price: 104000, transferPrice: 88400 }
     ],
     installments: 3,
-    imageUrl: "/images/products/pieza-de-cama-cotton.png",
+    imageUrl: "/images/products/pieza-de-cama-cotton.webp",
     isNew: true,
     isFeatured: false,
     createdAt: "2026-08-15T00:00:00.000Z"

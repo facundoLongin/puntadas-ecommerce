@@ -40,7 +40,7 @@ export default function Home() {
 
           <div className="relative min-h-[320px] overflow-hidden rounded-md bg-[#f5efe7] shadow-sm">
             <Image
-              src="/images/hero/puntadas-home-hero.png"
+              src="/images/hero/puntadas-home-hero.webp"
               alt="Dormitorio luminoso con textiles Puntadas en tonos beige, off white y verde oliva"
               fill
               sizes="(min-width: 1024px) 42vw, 100vw"

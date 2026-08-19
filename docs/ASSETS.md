@@ -6,11 +6,12 @@ Este archivo registra assets visuales del proyecto y su origen.
 
 Los assets publicos no deben exponer datos reales del negocio, clientes o usuarios.
 Las imagenes de producto actuales son imagenes demo generadas para portfolio y desarrollo.
+Las imagenes generadas se sirven en formato WebP para reducir peso y mejorar la carga local.
 
 ## Imagen Principal
 
 ```text
-Archivo: frontend/public/images/hero/puntadas-home-hero.png
+Archivo: frontend/public/images/hero/puntadas-home-hero.webp
 Uso: hero de inicio
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -21,7 +22,7 @@ Notas: dormitorio luminoso con textiles beige, off-white y verde oliva; sin text
 ## Imagenes De Producto
 
 ```text
-Archivo: frontend/public/images/products/acolchado-lino-natural.png
+Archivo: frontend/public/images/products/acolchado-lino-natural.webp
 Producto: Acolchado Lino Natural
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -30,7 +31,7 @@ Notas: acolchado beige/natural en dormitorio claro; sin texto, logos ni personas
 ```
 
 ```text
-Archivo: frontend/public/images/products/almohadon-verde-oliva.png
+Archivo: frontend/public/images/products/almohadon-verde-oliva.webp
 Producto: Almohadon Verde Oliva
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -39,7 +40,7 @@ Notas: almohadon verde oliva en ambiente blanco/beige; sin texto, logos ni perso
 ```
 
 ```text
-Archivo: frontend/public/images/products/cubre-edredon-gris-perla.png
+Archivo: frontend/public/images/products/cubre-edredon-gris-perla.webp
 Producto: Cubre Edredon Gris Perla
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -48,7 +49,7 @@ Notas: cubre edredon gris perla en dormitorio minimalista; sin texto, logos ni p
 ```
 
 ```text
-Archivo: frontend/public/images/products/respaldo-camel.png
+Archivo: frontend/public/images/products/respaldo-camel.webp
 Producto: Respaldo Camel
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -57,7 +58,7 @@ Notas: respaldo camel tapizado con cama blanca; sin texto, logos ni personas.
 ```
 
 ```text
-Archivo: frontend/public/images/products/cubrecama-algodon-stone.png
+Archivo: frontend/public/images/products/cubrecama-algodon-stone.webp
 Producto: Cubrecama Algodon Stone
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
@@ -66,7 +67,7 @@ Notas: cubrecama gris stone de algodon; sin texto, logos ni personas.
 ```
 
 ```text
-Archivo: frontend/public/images/products/pieza-de-cama-cotton.png
+Archivo: frontend/public/images/products/pieza-de-cama-cotton.webp
 Producto: Pieza de Cama Cotton
 Origen: generado con imagegen
 Licencia/uso: asset generado para el proyecto, apto como demo publica
