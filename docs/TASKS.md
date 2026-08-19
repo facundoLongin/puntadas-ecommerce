@@ -47,6 +47,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Implementar feedback visual al agregar productos al carrito.
 - Implementar acceso demo de cliente con ingreso/registro desde header.
 - Bloquear agregado al carrito y compra si no hay sesion demo.
+- Mostrar ingreso/registro visibles en header y nombre de usuario con sesion activa.
 
 ## Bloqueos
 

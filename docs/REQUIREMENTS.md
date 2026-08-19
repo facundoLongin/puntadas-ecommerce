@@ -91,7 +91,8 @@ Usuario afectado: clientes
 Descripcion: mostrar opciones de ingresar y registrarse desde el header y paginas dedicadas.
 Reglas:
 - El acceso inicial es demo/local, sin backend real de usuarios.
-- La UI debe ofrecer ingresar y registrarse desde el icono de cuenta del header.
+- La UI debe mostrar ingresar y registrarse como acciones visibles en el header.
+- Cuando hay sesion demo activa, el header debe mostrar el nombre de usuario.
 - No se deben pedir ni guardar credenciales reales en esta etapa.
 - La sesion demo solo desbloquea flujos de carrito/compra para validar experiencia.
 Prioridad: alta

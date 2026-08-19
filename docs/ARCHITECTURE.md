@@ -131,7 +131,7 @@ frontend/
 
 - El estado de sesion demo vive en `features/auth`.
 - `AuthProvider` provee estado de cliente demo al frontend.
-- `AccountMenu` muestra acciones de ingresar, registrarse o cerrar sesion desde el header.
+- `AccountMenu` muestra acciones visibles de ingresar/registrarse y, con sesion activa, el nombre de usuario y cierre de sesion.
 - Las paginas `/ingresar` y `/registro` permiten activar una cuenta demo sin pedir credenciales reales.
 - Esta capa no reemplaza autenticacion real de produccion ni autorizacion backend.
 

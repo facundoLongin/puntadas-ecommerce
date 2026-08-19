@@ -92,3 +92,13 @@ Alternativas consideradas: permitir carrito anonimo, bloquear toda la navegacion
 Razon: la sesion demo valida el flujo y la experiencia sin pedir credenciales reales ni guardar datos personales en esta etapa publica.
 
 Consecuencias: el frontend incluye `features/auth` y paginas `/ingresar` y `/registro`. En produccion se debera reemplazar por autenticacion real validada por backend.
+
+### 2026-08-19 - Acceso visible en header
+
+Decision: mostrar botones visibles de ingresar y registrarse en el header cuando no hay sesion, y mostrar el nombre del usuario demo cuando la sesion esta activa.
+
+Contexto: el icono de perfil podia no ser evidente para personas nuevas que quieren registrarse o ingresar.
+
+Razon: las acciones visibles reducen friccion y hacen mas claro que se necesita una cuenta para comprar.
+
+Consecuencias: el header ocupa mas espacio, por lo que sus controles deben mantenerse compactos y adaptables en mobile.

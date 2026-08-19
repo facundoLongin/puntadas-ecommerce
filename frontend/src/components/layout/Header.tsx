@@ -18,7 +18,7 @@ const navItems = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#eee5d8] bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:flex-nowrap sm:gap-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3" aria-label="Puntadas inicio">
           <span className="relative h-14 w-14 overflow-hidden rounded-full border border-[#e8ddce] bg-white">
             <Image
@@ -43,7 +43,7 @@ export function Header() {
           </label>
         </form>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
           <IconButton label="Buscar" className="md:hidden">
             <Search className="h-5 w-5" />
           </IconButton>
