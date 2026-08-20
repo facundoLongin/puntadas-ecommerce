@@ -16,7 +16,7 @@ Arquitectura definida como monorepo con dos aplicaciones principales:
 - Testing: `node:test`, `tsx` y auditoria local de SEO/accesibilidad.
 - Base de datos: por definir. Inicialmente repositorios en memoria con datos demo.
 - Autenticacion: usuarios y sesiones en memoria del backend para desarrollo. Persistencia real por definir.
-- Hosting/deploy: por definir.
+- Hosting/deploy: Cloudflare Pages para frontend estatico y Cloudflare Workers para API.
 
 ## Estructura Del Proyecto
 
@@ -57,6 +57,7 @@ backend/
         controllers/
         routers/
         middlewares/
+      worker/
     shared/
       errors/
       validation/
@@ -78,6 +79,7 @@ backend/
 - Endpoint `GET /api/products`.
 - Endpoint `GET /api/products/:slug`.
 - Endpoints `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me` y `POST /api/auth/logout`.
+- Worker inicial para Cloudflare con `GET /health`, `GET /api/products` y `GET /api/products/:slug`.
 - Repositorio en memoria con productos demo ficticios.
 - Repositorios en memoria para usuarios y sesiones.
 - Manejo centralizado de errores.
@@ -143,6 +145,15 @@ frontend/
 - Los formularios muestran errores de validacion especificos devueltos por la API.
 - Esta capa no reemplaza persistencia real de produccion ni autorizacion backend completa.
 
+## Deploy Cloudflare
+
+- `npm run build:cloudflare:frontend` genera `frontend/out` para Cloudflare Pages.
+- `npm run build:cloudflare:api` valida el Worker API configurado en `backend/wrangler.toml`.
+- La API Worker reutiliza la capa de aplicacion y repositorios de productos.
+- El adaptador Express local sigue disponible para desarrollo y pruebas completas de cuentas en memoria.
+- La autenticacion en Cloudflare queda pendiente hasta incorporar D1 o una persistencia equivalente.
+- Guia operativa: `docs/CLOUDFLARE.md`.
+
 ## Flujo General
 
 1. El cliente navega el frontend.
@@ -168,4 +179,5 @@ frontend/
 - `npm run test:frontend`: cubre filtros, opciones y precios por medida.
 - `npm run test:quality`: requiere frontend local levantado y revisa metadata SEO, `lang`, H1, imagenes con `alt` y nombres accesibles basicos en links/botones.
 - `npm run build`: valida TypeScript y build completo de backend/frontend.
+- `npm run build:cloudflare`: valida el export estatico de Pages y el Worker API.
 - `npm run lint --workspace frontend`: valida reglas de lint del frontend.

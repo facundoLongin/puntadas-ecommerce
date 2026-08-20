@@ -4,7 +4,7 @@ Este archivo mantiene el estado practico del proyecto.
 
 ## En Progreso
 
-- Definir si el panel administrativo entra en MVP.
+- Sin tareas activas luego del corte inicial de Cloudflare.
 
 ## Pendiente
 
@@ -15,6 +15,8 @@ Este archivo mantiene el estado practico del proyecto.
 - Definir comportamiento real de ayuda y mi cuenta.
 - Definir checkout real o derivacion a WhatsApp desde el carrito.
 - Definir persistencia real de usuarios y sesiones para produccion.
+- Implementar Cloudflare D1 para cuentas, sesiones, productos y pedidos persistentes.
+- Conectar frontend deployado al Worker con auth persistente.
 
 ## Hecho
 
@@ -55,11 +57,15 @@ Este archivo mantiene el estado practico del proyecto.
 - Agregar tests automatizados de frontend para filtros y precios por medida.
 - Agregar auditoria local de SEO/accesibilidad basica.
 - Agregar metadata SEO por rutas principales, sitemap y robots.
+- Agregar build estatico para Cloudflare Pages.
+- Agregar Worker API inicial para Cloudflare con health y productos demo.
+- Agregar headers estaticos de seguridad para Cloudflare Pages.
+- Documentar deploy en `docs/CLOUDFLARE.md`.
+- Elegir Cloudflare Pages, Workers y D1 como camino de deploy inicial.
 
 ## Proximos Pasos Sugeridos
 
-- Elegir proveedor de deploy para frontend y backend.
-- Elegir base de datos real y modelo inicial de usuarios, productos, pedidos y sesiones.
+- Definir modelo inicial D1 de usuarios, sesiones, productos, pedidos y variantes.
 - Reemplazar memoria backend por persistencia real con migraciones.
 - Definir checkout: pasarela de pago, WhatsApp o flujo mixto.
 - Agregar roles y panel administrativo para carga de productos.

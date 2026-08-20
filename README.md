@@ -29,6 +29,7 @@ Backend local: `http://localhost:4000`
 ```bash
 npm test
 npm run build
+npm run build:cloudflare
 npm run lint --workspace frontend
 ```
 
@@ -43,3 +44,7 @@ Ese chequeo revisa metadata SEO basica y estructura accesible en rutas clave.
 ## Privacidad
 
 Antes de publicar cambios, revisar `docs/PRIVACY.md`.
+
+## Deploy
+
+La guia de Cloudflare esta en `docs/CLOUDFLARE.md`.

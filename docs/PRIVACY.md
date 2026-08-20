@@ -46,6 +46,7 @@ Para demos de portfolio, crear cuentas con datos ficticios.
 Los datos reales deben vivir fuera del repositorio:
 
 - Base de datos privada.
+- Base D1 privada configurada en Cloudflare, cuando se implemente persistencia real.
 - Storage privado para archivos o imagenes.
 - Variables de entorno configuradas en la plataforma de deploy.
 - Backups privados.
@@ -66,6 +67,8 @@ Los datos reales deben vivir fuera del repositorio:
 - [ ] El README aclara que los datos reales no forman parte del repositorio.
 - [ ] El backend valida permisos y roles para informacion privada.
 - [ ] El frontend no contiene secretos ni reglas de seguridad criticas como unica barrera.
+- [ ] Variables y secretos de Cloudflare estan configurados en Cloudflare, no en archivos commiteados.
+- [ ] `backend/wrangler.toml` no contiene tokens, ids privados sensibles ni credenciales reales.
 
 ## Si Se Filtra Informacion Sensible
 

@@ -136,3 +136,15 @@ Alternativas consideradas: no agregar tests todavia, usar un framework mas grand
 Razon: `node:test` reduce dependencias y permite cubrir reglas criticas ya. La auditoria local suma una barrera temprana para SEO y accesibilidad sin incorporar todavia Playwright.
 
 Consecuencias: se agregan scripts `npm test` y `npm run test:quality`. En una etapa posterior conviene sumar tests end-to-end con navegador real y auditoria de accesibilidad mas profunda.
+
+### 2026-08-20 - Deploy inicial en Cloudflare
+
+Decision: preparar Cloudflare Pages para el frontend estatico y Cloudflare Workers para una API inicial.
+
+Contexto: se necesita un deploy gratuito para pruebas publicas, con camino claro hacia dominio propio, base de datos real y compras seguras.
+
+Alternativas consideradas: mantener deploy local, usar una plataforma con backend Node persistente, o adaptar el proyecto a Cloudflare.
+
+Razon: Pages y Workers permiten publicar una version de prueba sin tarjeta ni secretos en el repo, y D1 encaja como siguiente paso gratuito para persistencia relacional liviana.
+
+Consecuencias: el frontend agrega un build estatico `output: export`; el backend suma un adaptador Worker que reutiliza servicios de productos. La autenticacion productiva en Cloudflare queda pendiente hasta migrar usuarios y sesiones a D1.
