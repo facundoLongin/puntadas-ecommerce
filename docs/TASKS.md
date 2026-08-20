@@ -55,6 +55,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Mostrar errores especificos de validacion en registro e ingreso.
 - Conectar acciones moviles del header: busqueda, ayuda y menu desplegable.
 - Agregar busqueda local por texto desde header hacia productos.
+- Corregir grilla mobile de productos para evitar cards superpuestas.
 - Agregar tests automatizados de backend para productos y cuentas.
 - Agregar tests automatizados de frontend para filtros y precios por medida.
 - Agregar auditoria local de SEO/accesibilidad basica.

@@ -5,11 +5,11 @@ import { ProductVisual } from "./ProductVisual";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group grid self-start content-start gap-3" data-testid="product-card">
+    <article className="group grid min-w-0 self-start content-start gap-3" data-testid="product-card">
       <Link className="block" href={`/productos/${product.slug}`} aria-label={`Ver ${product.name}`}>
         <ProductVisual product={product} />
       </Link>
-      <div className="grid content-start gap-2" data-testid="product-card-body">
+      <div className="grid min-w-0 content-start gap-2" data-testid="product-card-body">
         <Link
           href={`/productos/${product.slug}`}
           className="line-clamp-2 min-h-10 text-sm font-medium leading-5 text-[#2c2823] transition group-hover:text-[#6f7c4e]"
