@@ -5,7 +5,8 @@ export const defaultFilters: ProductFilterState = {
   colors: [],
   measures: [],
   options: [],
-  sort: "newest"
+  sort: "newest",
+  query: ""
 };
 
 export function toggleFilterValue<T extends string>(values: T[], value: T) {
@@ -15,8 +16,14 @@ export function toggleFilterValue<T extends string>(values: T[], value: T) {
 }
 
 export function filterProducts(products: Product[], filters: ProductFilterState) {
+  const query = normalizeSearchValue(filters.query);
+
   return sortProducts(
     products.filter((product) => {
+      if (query && !productMatchesSearch(product, query)) {
+        return false;
+      }
+
       if (filters.categories.length && !filters.categories.includes(product.category)) {
         return false;
       }
@@ -37,6 +44,27 @@ export function filterProducts(products: Product[], filters: ProductFilterState)
     }),
     filters.sort
   );
+}
+
+function productMatchesSearch(product: Product, query: string) {
+  const searchableValues = [
+    product.name,
+    product.description,
+    product.category,
+    ...product.colors,
+    ...product.measures,
+    ...product.options
+  ];
+
+  return searchableValues.some((value) => normalizeSearchValue(value).includes(query));
+}
+
+function normalizeSearchValue(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 function sortProducts(products: Product[], sort: ProductFilterState["sort"]) {

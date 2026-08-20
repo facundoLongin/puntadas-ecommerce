@@ -46,4 +46,5 @@ export type ProductFilterState = {
   measures: string[];
   options: string[];
   sort: ProductSort;
+  query: string;
 };

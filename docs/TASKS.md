@@ -53,6 +53,8 @@ Este archivo mantiene el estado practico del proyecto.
 - Implementar usuarios y sesiones en memoria del backend.
 - Implementar registro/login/logout con formularios reales.
 - Mostrar errores especificos de validacion en registro e ingreso.
+- Conectar acciones moviles del header: busqueda, ayuda y menu desplegable.
+- Agregar busqueda local por texto desde header hacia productos.
 - Agregar tests automatizados de backend para productos y cuentas.
 - Agregar tests automatizados de frontend para filtros y precios por medida.
 - Agregar auditoria local de SEO/accesibilidad basica.

@@ -2,6 +2,7 @@
 
 import { SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ProductFilters } from "@/components/products/ProductFilters";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Button } from "@/components/ui/Button";
@@ -15,10 +16,13 @@ import {
 import type { Product, ProductCategory, ProductColor, ProductFilterState, ProductSort } from "@/types/product";
 
 export function ProductCatalog({ products }: { products: Product[] }) {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") ?? "";
   const [filters, setFilters] = useState<ProductFilterState>(defaultFilters);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const activeFilters = useMemo(() => ({ ...filters, query }), [filters, query]);
 
-  const filteredProducts = useMemo(() => filterProducts(products, filters), [products, filters]);
+  const filteredProducts = useMemo(() => filterProducts(products, activeFilters), [products, activeFilters]);
   const options = useMemo(() => getFilterOptions(products), [products]);
   const counts = useMemo(
     () => ({
@@ -31,7 +35,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
   );
 
   const filterProps = {
-    filters,
+    filters: activeFilters,
     options,
     counts,
     products,
@@ -54,6 +58,12 @@ export function ProductCatalog({ products }: { products: Product[] }) {
       </div>
 
       <div className="grid gap-5">
+        {filters.query ? (
+          <div className="rounded-md border border-[#e8ddce] bg-[#faf7f1] px-4 py-3 text-sm text-[#62594f]">
+            Resultados para <span className="font-semibold text-[#211d19]">{filters.query}</span>
+          </div>
+        ) : null}
+
         <div className="flex items-center justify-between gap-4 lg:hidden">
           <p className="text-sm text-[#6b6258]">{filteredProducts.length} resultados</p>
           <Button variant="ghost" className="gap-2 border border-[#d8c4a5]" onClick={() => setIsFilterOpen(true)}>

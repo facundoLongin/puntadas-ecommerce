@@ -25,6 +25,16 @@ test("filter options and toggles are reusable", () => {
   assert.deepEqual(toggleFilterValue(["beige"], "gris"), ["beige", "gris"]);
 });
 
+test("product filtering supports text search", () => {
+  const filtered = filterProducts(demoProducts, {
+    ...defaultFilters,
+    query: "verde oliva"
+  });
+
+  assert.equal(filtered.length, 1);
+  assert.equal(filtered[0].slug, "almohadon-verde-oliva");
+});
+
 test("measure pricing selects variants and falls back safely", () => {
   const product = demoProducts.find((item) => item.slug === "acolchado-lino-natural");
   assert.ok(product);

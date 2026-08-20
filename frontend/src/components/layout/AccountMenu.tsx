@@ -3,13 +3,23 @@
 import Link from "next/link";
 import { LogIn, LogOut, UserPlus, UserRound } from "lucide-react";
 import { useAuth } from "@/features/auth/auth-context";
+import { cn } from "@/lib/cn";
 
-export function AccountMenu() {
+type AccountMenuProps = {
+  className?: string;
+};
+
+export function AccountMenu({ className }: AccountMenuProps) {
   const { user, isAuthenticated, isLoading, signOut } = useAuth();
 
   if (isLoading) {
     return (
-      <span className="hidden h-10 items-center rounded-md border border-[#eee5d8] bg-[#faf7f1] px-3 text-sm font-semibold text-[#6f675d] sm:inline-flex">
+      <span
+        className={cn(
+          "hidden h-10 items-center rounded-md border border-[#eee5d8] bg-[#faf7f1] px-3 text-sm font-semibold text-[#6f675d] sm:inline-flex",
+          className
+        )}
+      >
         Cuenta
       </span>
     );
@@ -17,7 +27,7 @@ export function AccountMenu() {
 
   if (isAuthenticated) {
     return (
-      <div className="flex items-center gap-2">
+      <div className={cn("flex items-center gap-2", className)}>
         <span className="inline-flex h-10 max-w-[150px] items-center gap-2 rounded-md border border-[#d8c4a5] bg-[#faf7f1] px-3 text-sm font-semibold text-[#211d19] sm:max-w-none">
           <UserRound className="h-4 w-4 shrink-0 text-[#6f7c4e]" />
           <span className="truncate">{user?.firstName}</span>
@@ -36,17 +46,17 @@ export function AccountMenu() {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", className)}>
       <Link
         href="/ingresar"
-        className="inline-flex h-10 items-center gap-2 rounded-md border border-[#d8c4a5] bg-white px-3 text-sm font-semibold text-[#2a2825] transition hover:bg-[#f4efe7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f7c4e]"
+        className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-md border border-[#d8c4a5] bg-white px-3 text-sm font-semibold text-[#2a2825] transition hover:bg-[#f4efe7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f7c4e] sm:flex-none"
       >
         <LogIn className="h-4 w-4" />
         <span>Ingresar</span>
       </Link>
       <Link
         href="/registro"
-        className="inline-flex h-10 items-center gap-2 rounded-md bg-[#d8c4a5] px-3 text-sm font-semibold text-[#211b16] transition hover:bg-[#c9b28e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f7c4e]"
+        className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-md bg-[#d8c4a5] px-3 text-sm font-semibold text-[#211b16] transition hover:bg-[#c9b28e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f7c4e] sm:flex-none"
       >
         <UserPlus className="h-4 w-4" />
         <span>Registrarme</span>
