@@ -5,9 +5,16 @@ Guia operativa para desplegar Puntadas en Cloudflare sin publicar datos reales n
 ## Estado Actual
 
 - Frontend listo para Cloudflare Pages como export estatico de Next.js.
-- API Worker inicial listo para `health` y productos demo.
+- API Worker inicial deployada con `health` y productos demo.
 - Autenticacion en Worker pendiente hasta incorporar D1 u otra persistencia real.
 - El backend Express local sigue siendo la referencia completa para desarrollo de cuentas en memoria.
+
+## URLs Actuales
+
+```text
+Frontend Pages: https://puntadas-ecommerce.pages.dev
+Worker API: https://puntadas-api.facundo-longin.workers.dev
+```
 
 ## Servicios A Usar
 

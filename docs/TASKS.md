@@ -4,7 +4,7 @@ Este archivo mantiene el estado practico del proyecto.
 
 ## En Progreso
 
-- Deployar Worker API inicial en Cloudflare.
+- Sin tareas activas luego del deploy inicial de Worker.
 
 ## Pendiente
 
@@ -17,6 +17,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Definir persistencia real de usuarios y sesiones para produccion.
 - Implementar Cloudflare D1 para cuentas, sesiones, productos y pedidos persistentes.
 - Conectar frontend deployado al Worker con auth persistente.
+- Configurar `NEXT_PUBLIC_API_BASE_URL` en Pages cuando el Worker tenga auth persistente.
 
 ## Hecho
 
@@ -65,6 +66,8 @@ Este archivo mantiene el estado practico del proyecto.
 - Agregar headers estaticos de seguridad para Cloudflare Pages.
 - Documentar deploy en `docs/CLOUDFLARE.md`.
 - Elegir Cloudflare Pages, Workers y D1 como camino de deploy inicial.
+- Deployar Worker API inicial en Cloudflare.
+- Verificar `GET /health` y `GET /api/products` del Worker deployado.
 
 ## Proximos Pasos Sugeridos
 
