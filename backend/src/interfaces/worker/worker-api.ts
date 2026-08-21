@@ -224,6 +224,12 @@ export default {
         return errorResponse(request, env, 400, "VALIDATION_ERROR", "El cuerpo de la solicitud debe ser JSON valido.");
       }
 
+      console.error("Worker request failed", {
+        message: error instanceof Error ? error.message : "Unknown error",
+        name: error instanceof Error ? error.name : "UnknownError",
+        pathname: new URL(request.url).pathname
+      });
+
       return errorResponse(request, env, 500, "INTERNAL_SERVER_ERROR", "Error interno");
     }
   }

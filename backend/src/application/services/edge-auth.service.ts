@@ -8,7 +8,7 @@ type AuthResponse = {
   token: string;
 };
 
-const passwordIterations = 210000;
+const passwordIterations = 100000;
 const passwordHashPrefix = "pbkdf2-sha256";
 
 function normalizeEmail(email: string) {
