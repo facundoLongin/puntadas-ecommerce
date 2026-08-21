@@ -4,7 +4,7 @@ Este archivo mantiene el estado practico del proyecto.
 
 ## En Progreso
 
-- Sin tareas activas luego del deploy inicial de Worker.
+- Aplicar migraciones D1 y redeployar Worker con auth persistente.
 
 ## Pendiente
 
@@ -15,7 +15,7 @@ Este archivo mantiene el estado practico del proyecto.
 - Definir comportamiento real de ayuda y mi cuenta.
 - Definir checkout real o derivacion a WhatsApp desde el carrito.
 - Definir persistencia real de usuarios y sesiones para produccion.
-- Implementar Cloudflare D1 para cuentas, sesiones, productos y pedidos persistentes.
+- Implementar Cloudflare D1 para productos y pedidos persistentes.
 - Conectar frontend deployado al Worker con auth persistente.
 - Configurar `NEXT_PUBLIC_API_BASE_URL` en Pages cuando el Worker tenga auth persistente.
 
@@ -68,6 +68,8 @@ Este archivo mantiene el estado practico del proyecto.
 - Elegir Cloudflare Pages, Workers y D1 como camino de deploy inicial.
 - Deployar Worker API inicial en Cloudflare.
 - Verificar `GET /health` y `GET /api/products` del Worker deployado.
+- Crear base D1 `puntadas-db`.
+- Enlazar D1 al Worker con binding `DB`.
 
 ## Proximos Pasos Sugeridos
 

@@ -1,11 +1,17 @@
 import { ZodError } from "zod";
+import { EdgeAuthService } from "../../application/services/edge-auth.service.js";
 import { ProductService } from "../../application/services/product.service.js";
+import { D1SessionRepository } from "../../infrastructure/repositories/d1-session.repository.js";
+import { D1UserRepository } from "../../infrastructure/repositories/d1-user.repository.js";
 import { InMemoryProductRepository } from "../../infrastructure/repositories/in-memory-product.repository.js";
 import { AppError } from "../../shared/errors/app-error.js";
+import { UnauthorizedError } from "../../shared/errors/app-error.js";
 import { productQuerySchema } from "../../shared/validation/product-query.schema.js";
+import { loginSchema, registerSchema } from "../../shared/validation/auth.schema.js";
 import { toValidationErrorDetails } from "../../shared/validation/validation-error-details.js";
 
 type WorkerEnv = {
+  DB?: D1Database;
   FRONTEND_ORIGIN?: string;
 };
 
@@ -99,6 +105,71 @@ function getProductSlug(pathname: string) {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
+function getAuthService(env: WorkerEnv) {
+  if (!env.DB) {
+    return null;
+  }
+
+  return new EdgeAuthService(new D1UserRepository(env.DB), new D1SessionRepository(env.DB));
+}
+
+function getBearerToken(request: Request) {
+  const authorization = request.headers.get("Authorization");
+
+  if (!authorization?.startsWith("Bearer ")) {
+    throw new UnauthorizedError("Sesion requerida");
+  }
+
+  return authorization.slice("Bearer ".length);
+}
+
+async function readJsonBody(request: Request) {
+  return request.json().catch(() => {
+    throw new Error("INVALID_JSON");
+  });
+}
+
+async function handleAuthRequest(request: Request, env: WorkerEnv, pathname: string) {
+  const authService = getAuthService(env);
+
+  if (!authService) {
+    return errorResponse(
+      request,
+      env,
+      501,
+      "AUTH_PERSISTENCE_REQUIRED",
+      "La autenticacion en Cloudflare requiere una base D1 configurada."
+    );
+  }
+
+  if (request.method === "POST" && (pathname === "/api/auth/register" || pathname === "/auth/register")) {
+    const { confirmPassword: _confirmPassword, ...input } = registerSchema.parse(await readJsonBody(request));
+    const auth = await authService.register(input);
+    return jsonResponse(request, env, { data: auth }, { status: 201 });
+  }
+
+  if (request.method === "POST" && (pathname === "/api/auth/login" || pathname === "/auth/login")) {
+    const input = loginSchema.parse(await readJsonBody(request));
+    const auth = await authService.login(input);
+    return jsonResponse(request, env, { data: auth });
+  }
+
+  if (request.method === "GET" && (pathname === "/api/auth/me" || pathname === "/auth/me")) {
+    const user = await authService.getSessionUser(getBearerToken(request));
+    return jsonResponse(request, env, { data: { user } });
+  }
+
+  if (request.method === "POST" && (pathname === "/api/auth/logout" || pathname === "/auth/logout")) {
+    await authService.logout(getBearerToken(request));
+    return new Response(null, {
+      status: 204,
+      headers: getCorsHeaders(request, env)
+    });
+  }
+
+  return errorResponse(request, env, 404, "NOT_FOUND", "Ruta no encontrada");
+}
+
 async function handleRequest(request: Request, env: WorkerEnv) {
   const url = new URL(request.url);
   const pathname = url.pathname;
@@ -130,13 +201,7 @@ async function handleRequest(request: Request, env: WorkerEnv) {
   }
 
   if (pathname.startsWith("/api/auth") || pathname.startsWith("/auth")) {
-    return errorResponse(
-      request,
-      env,
-      501,
-      "AUTH_PERSISTENCE_REQUIRED",
-      "La autenticacion en Cloudflare queda pendiente para la etapa con D1."
-    );
+    return handleAuthRequest(request, env, pathname);
   }
 
   return errorResponse(request, env, 404, "NOT_FOUND", "Ruta no encontrada");
@@ -153,6 +218,10 @@ export default {
 
       if (error instanceof AppError) {
         return errorResponse(request, env, error.statusCode, error.code, error.message);
+      }
+
+      if (error instanceof Error && error.message === "INVALID_JSON") {
+        return errorResponse(request, env, 400, "VALIDATION_ERROR", "El cuerpo de la solicitud debe ser JSON valido.");
       }
 
       return errorResponse(request, env, 500, "INTERNAL_SERVER_ERROR", "Error interno");

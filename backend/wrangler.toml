@@ -4,3 +4,8 @@ compatibility_date = "2026-08-20"
 
 [vars]
 FRONTEND_ORIGIN = "https://puntadas-ecommerce.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "puntadas-db"
+database_id = "46e6e74b-edd5-47ab-b5ad-0fb6c310bb87"

@@ -6,7 +6,8 @@ Guia operativa para desplegar Puntadas en Cloudflare sin publicar datos reales n
 
 - Frontend listo para Cloudflare Pages como export estatico de Next.js.
 - API Worker inicial deployada con `health` y productos demo.
-- Autenticacion en Worker pendiente hasta incorporar D1 u otra persistencia real.
+- Base D1 `puntadas-db` creada y enlazada al Worker como `DB`.
+- Autenticacion en Worker pendiente de aplicar migraciones y redeploy con D1.
 - El backend Express local sigue siendo la referencia completa para desarrollo de cuentas en memoria.
 
 ## URLs Actuales
@@ -50,6 +51,13 @@ Configuracion local versionada:
 backend/wrangler.toml
 ```
 
+Binding D1 actual:
+
+```text
+binding: DB
+database_name: puntadas-db
+```
+
 Comandos previstos:
 
 ```bash
@@ -65,10 +73,9 @@ FRONTEND_ORIGIN=https://<tu-proyecto>.pages.dev
 
 ## Limitaciones De Esta Etapa
 
-- El Worker no persiste usuarios ni sesiones.
-- Los endpoints de auth del Worker responden que la autenticacion requiere la etapa D1.
+- La base D1 existe, pero falta aplicar migraciones y redeployar el Worker con el binding activo.
 - El flujo completo de registro/login sigue funcionando localmente con Express y memoria.
-- Para una prueba publica completa de cuentas y compra, primero hay que implementar D1 y sesiones persistentes.
+- Para una prueba publica completa de cuentas y compra, falta verificar registro/login contra D1 deployado.
 
 ## Seguridad
 
