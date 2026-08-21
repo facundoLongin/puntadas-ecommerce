@@ -4,7 +4,7 @@ Este archivo mantiene el estado practico del proyecto.
 
 ## En Progreso
 
-- Sin tareas activas luego del corte inicial de Cloudflare.
+- Deployar Worker API inicial en Cloudflare.
 
 ## Pendiente
 

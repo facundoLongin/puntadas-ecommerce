@@ -50,7 +50,7 @@ npm run build:cloudflare:api
 npx wrangler deploy --config backend/wrangler.toml
 ```
 
-Antes de deployar, en Cloudflare ajustar `FRONTEND_ORIGIN` al dominio real de Pages para limitar CORS:
+El Worker versiona `FRONTEND_ORIGIN` con el dominio actual de Pages para limitar CORS:
 
 ```text
 FRONTEND_ORIGIN=https://<tu-proyecto>.pages.dev
